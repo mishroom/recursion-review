@@ -8,7 +8,9 @@ var stringifyJSON = function(obj) {
 //inputs could be any data structure from an object
 //outputs should be a string with the structures in quotes "[thing1, thing2]"
   var outputString = "";
-
+  if (typeof obj === "function"){
+    return outputString;
+  } 
   if(typeof obj === "number"){
     outputString += obj;
   } else if(typeof obj === "string"){
@@ -30,6 +32,19 @@ var stringifyJSON = function(obj) {
     outputString += "undefined";
   } else if(typeof obj === "object"){
     outputString += "{";
+    var count=0;
+    for (var key in obj){
+      if (typeof obj[key] !== "function" && typeof obj[key] !== "undefined"){
+        outputString += stringifyJSON(key) + ":";
+        outputString += stringifyJSON(obj[key])  + ",";
+        count++;
+      }
+    }
+    if (Object.keys(obj).length === count && Object.keys(obj).length) {
+      outputString = outputString.slice(0, outputString.length - 1);
+    }
+    
+    outputString += "}";
 
   } 
 
