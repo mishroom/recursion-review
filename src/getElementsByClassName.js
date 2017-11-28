@@ -15,7 +15,7 @@ var getElementsByClassName = function(className) {
     checkNodes(node);
   }
 
-  function checkNodes(element) {
+  var checkNodes = function (element) {
     if (element.hasChildNodes()) {
       for (var i = 0; i < element.childNodes.length; i++) {
         checkNodes(element.childNodes[i]);
@@ -30,7 +30,6 @@ var getElementsByClassName = function(className) {
         }
       }
     }
-  }
-  
-  return output.reverse();
+  };
+  return output.reverse(); 
 };
