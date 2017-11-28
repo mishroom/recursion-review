@@ -19,8 +19,10 @@ describe('getElementsByClassName', function() {
       var result = getElementsByClassName('targetClassName');
       var expectedNodeList = document.getElementsByClassName('targetClassName');
       var expectedArray = Array.prototype.slice.apply(expectedNodeList);
-      var equality = _.isEqual(result, expectedArray); // why can't we use `===` here?
-      expect(equality).to.equal(FILL_ME_IN);
+      var equality = _.isEqual(result, expectedArray);
+console.log("xpected array: ", expectedArray);
+console.log("result: ", result); // why can't we use `===` here?
+      expect(equality).to.equal(true);
 
       $rootElement.remove();
     });
